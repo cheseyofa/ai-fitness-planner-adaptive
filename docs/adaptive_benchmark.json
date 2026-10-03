@@ -1,0 +1,14 @@
+{
+  "scope": "24 synthetic offline cases; 3 injected failures; separately labeled one live model sample; not medical efficacy",
+  "cases": 24,
+  "readiness_classification_accuracy": 1.0,
+  "plan_constraint_pass_rate": 1.0,
+  "exercise_retrieval_recall_at_10": 1.0,
+  "average_agent_latency_ms": 0.38283333196886815,
+  "tool_call_success_rate": 0.3333333333333333,
+  "tool_rate_scope": "9 attempts: 6 deliberate remote failures, 3 local successes; not external availability",
+  "structured_output_valid_rate": 1.0,
+  "fallback_success_rate": 1.0,
+  "average_token_usage": 788,
+  "live_model_samples": 1
+}

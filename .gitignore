@@ -1,0 +1,123 @@
+# Environment files (IMPORTANT: Keep these secure!)
+.env
+config/dev.env
+config/prod.env
+config/staging.env
+
+# But keep the example file for other developers
+!.env.example
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
+
+# Virtual environments
+.env/
+.venv/
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# Docker
+.dockerignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Database
+*.db
+*.sqlite3
+
+# Temporary files
+*.tmp
+*.temp
+*.json 
+*.png
+*.PNG 
+*.csv
+*.pdf
+*.jpeg
+*.zip
+*.faiss
+*.pkl
+
+# 可复现评估与虚构用户验收样例（不含密钥、真实用户资料）。
+!docs/adaptive_benchmark.json
+!docs/adaptive_live_verification.json
+
+# Safe publishing: local credentials, runtime records and generated artifacts.
+.env.*
+!.env.example
+node_modules/
+.idea/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.cache/
+*.log.*
+*.pem
+*.key
+*.p12
+*.pfx
+*.bak
+*.dump
+*.sql.gz
+.release/
+docs/adaptive_live_verification.json
+docs/deepseek_workout_demo.json
+data/
+
+# Developer-machine instructions, setup logs, and credentials.
+AGENTS.md
+venv/
+logs/
+*.log
+*.pem
+*.key
+secrets.*
+*.secret
+docs/environment_setup.md
+docs/runtime_progress.md
+docs/functionality_audit.md

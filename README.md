@@ -1,0 +1,193 @@
+# AI Fitness Planner 🏋️‍♂️
+
+## 自适应健身改造进度
+
+已接入恢复评分、今日自适应训练、训练反馈与历史记忆，新增四个中文页面，DeepSeek 真实调用与本地数据库闭环已验证。MCP、视频适配具有本地回退；外部服务与营养嵌入仍有独立配置要求，不能视为全部连通。架构、阶段状态、运行命令、评估和限制见 [最新改造记录](docs/adaptive_progress.md)；评分公式见 [第一阶段说明](docs/adaptive_phase1.md)。
+
+![AI Fitness Planner Demo](ai_fitness_planner.gif)
+
+Full-stack GenAI system that creates personalized fitness and nutrition plans using **LangGraph workflows**, real USDA nutrition data, and coordinated AI agents.
+
+**What it does**: Upload your profile, get a complete meal + workout plan in minutes. It's like having a personal trainer and nutritionist, but powered by AI.
+
+---
+
+## 🚀 Quick Start (5 minutes)
+
+**Prerequisites**: Docker and Git
+
+```bash
+# 1. Clone and setup
+git clone https://github.com/zen-apps/ai-fitness-planner.git
+cd ai-fitness-planner
+cp .env.example .env
+
+# 2. Start everything (downloads nutrition data automatically)
+make setup-demo
+```
+
+**That's it!** Access your app:
+- **Frontend**: http://localhost:8526
+- **API Docs**: http://localhost:1015/docs
+
+---
+
+<!-- Option 2: Text below the badge -->
+<p align="left">
+  <a href="https://labs.joshjanzen.com/">
+    <img src="https://img.shields.io/badge/🔗_Live-Demo-brightgreen?style=for-the-badge" alt="Live Demo">
+  </a><br>
+  <em><small>Google login required</small></em>
+</p>
+
+---
+
+## 🎯 What You Get
+
+### ✅ **Personalized Plans**
+- Custom calorie and macro targets based on your goals
+- AI-generated meal plans using real USDA food data
+- Workout routines tailored to your equipment and experience
+
+### ✅ **Smart Food Search**
+- Semantic search: "high protein breakfast foods" 
+- 5,000 curated foods covering all major categories
+- Dietary restriction filtering (vegetarian, gluten-free, etc.)
+
+### ✅ **LangGraph AI Workflows**
+- Multiple AI agents working together
+- Profile → Meal Planning → Workout Planning → Coordination
+- Real-time plan generation with full traceability
+
+---
+
+## 🛠️ How It Works
+
+### **Multi-Agent System**
+
+```mermaid
+graph TD
+    A[User Profile Input] --> B[LangGraph Workflow Orchestrator]
+    B --> C[Profile Manager Agent]
+    B --> D[Meal Planner Agent]
+    B --> E[Workout Planner Agent]
+    B --> F[Plan Coordinator Agent]
+    B --> G[Summary Agent]
+    
+    C --> H[User Profile DB]
+    D --> I[USDA Nutrition DB - 300K+ Foods]
+    D --> J[FAISS Vector Search]
+    D --> K[Hybrid Search Engine]
+    E --> L[Exercise Database]
+    
+    F --> M[Plan Integration & Timing]
+    G --> N[Complete Fitness Plan]
+    N --> O[Streamlit Frontend]
+    O --> P[Advanced Food Search UI]
+    
+    Q[LangSmith Tracing] --> B
+    Q --> C
+    Q --> D
+    Q --> E
+    Q --> F
+    Q --> G
+```
+
+### **Tech Stack**
+- **LangGraph**: AI workflow orchestration
+- **GPT-4o-mini** and **GPT-o3-mini**: Fast, cost-effective reasoning
+- **LangSmith**: Observability and tracing for AI workflows
+- **FAISS**: Vector search for nutrition data
+- **MongoDB**: 5K curated USDA foods
+- **Streamlit**: Interactive frontend
+- **FastAPI**: Production API backend
+
+---
+
+## 💡 Key Features
+
+### **Smart Nutrition Database**
+- 5,000 intelligently sampled foods from 450K+ USDA database
+- Enhanced with per-100g nutrition calculations
+- Macro breakdown analysis (high-protein/fat/carb classification)
+- Sub-second semantic search
+
+### **Coordinated Planning**
+- Meal timing optimized around workouts
+- Pre/post-workout nutrition recommendations
+- Training day vs rest day meal variations
+- Goal-specific plans (bulk/cut/maintenance)
+
+### **Production Ready**
+- Docker containerization
+- Automated database setup
+- LangSmith observability integration
+- Comprehensive error handling
+
+---
+
+## 🔧 Development
+
+```bash
+# View logs
+make logs
+
+# Reset database
+make clean-db
+
+# Test the system
+curl http://localhost:1015/docs
+```
+
+### **Environment Setup**
+Edit `.env` with your API keys:
+```bash
+OPENAI_API_KEY=sk-your_openai_api_key_here
+LANGSMITH_API_KEY=your_langsmith_key  # Optional
+```
+
+---
+
+## 🎨 What Makes This Special
+
+### **LangGraph Workflows**
+Unlike single LLM calls, this uses orchestrated AI agents that:
+- Share context and coordinate decisions
+- Handle complex multi-step reasoning
+- Provide transparent execution tracking
+- Scale to more complex scenarios
+
+### **Real Data Integration**
+- Actual USDA nutrition database (not fake data)
+- Vector embeddings for semantic food matching
+- Production-grade data processing pipeline
+
+### **Production Patterns**
+- Observable with LangSmith tracing
+- Scalable architecture with Docker
+
+---
+
+## 🚀 Next Steps
+
+Want to extend this? Easy additions:
+- **Progress Tracking Agent**: Monitor user improvements
+- **Supplement Advisor**: Recommend supplements based on diet gaps
+- **Wearable Integration**: Connect fitness trackers
+- **Mobile App**: React Native frontend
+
+---
+
+## 📈 Why LangGraph?
+
+Traditional LLMs give you one response. LangGraph gives you:
+- **Coordinated Intelligence**: Multiple specialists working together
+- **State Management**: Agents share and build on each other's work
+- **Reliability**: Built-in error handling and retry mechanisms
+- **Transparency**: See exactly how decisions are made
+
+Perfect for complex, multi-step AI applications like fitness planning.
+
+---
+
+**Ready to build your own AI fitness coach?** Clone, run `make setup-demo`, and start generating personalized plans in minutes! 💪
